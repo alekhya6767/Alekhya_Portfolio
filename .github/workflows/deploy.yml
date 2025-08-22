@@ -6,7 +6,7 @@ name: Deploy Frontend to GitHub Pages
 on:
   push:
     branches:
-      - development
+      - main
 
 jobs:
   build-and-deploy-frontend:
