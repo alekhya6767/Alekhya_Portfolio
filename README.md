@@ -34,7 +34,7 @@ This portfolio demonstrates my technical journey as a **Firmware Engineer** with
 ## 📁 Project Structure
 
 ```
-Portfolio/
+Alekhya_Portfolio/
 ├── frontend/                 # React application
 │   ├── src/
 │   │   ├── components/      # Reusable UI components
@@ -61,8 +61,8 @@ Portfolio/
 
 1. Clone the repository
 ```bash
-git clone https://github.com/alekhya6767/My_Portfolio.git
-cd My_Portfolio/Portfolio/frontend
+git clone https://github.com/alekhya6767/Alekhya_Portfolio.git
+cd Alekhya_Portfolio/frontend
 ```
 
 2. Install dependencies
