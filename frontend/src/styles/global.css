@@ -1,0 +1,196 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer base {
+  :root {
+    --color-primary: 59, 130, 246;    /* #3B82F6 */
+    --color-secondary: 16, 185, 129;  /* #10B981 */
+    --color-bg: 255, 255, 255;        /* #FFFFFF */
+    --color-bg-secondary: 249, 250, 251; /* #F9FAFB */
+    --color-text: 17, 24, 39;         /* #111827 */
+    --color-text-secondary: 75, 85, 99; /* #4B5563 */
+    --color-border: 229, 231, 235;    /* #E5E7EB */
+    --color-error: 239, 68, 68;       /* #EF4444 */
+    --color-success: 16, 185, 129;    /* #10B981 */
+    --color-warning: 245, 158, 11;    /* #F59E0B */
+  }
+
+  [data-theme="dark"] {
+    --color-primary: 96, 165, 250;    /* #60A5FA */
+    --color-secondary: 52, 211, 153;  /* #34D399 */
+    --color-bg: 17, 24, 39;          /* #111827 */
+    --color-bg-secondary: 31, 41, 55; /* #1F2937 */
+    --color-text: 249, 250, 251;     /* #F9FAFB */
+    --color-text-secondary: 209, 213, 219; /* #D1D5DB */
+    --color-border: 55, 65, 81;       /* #374151 */
+    --color-error: 248, 113, 113;     /* #F87171 */
+    --color-success: 52, 211, 153;    /* #34D399 */
+    --color-warning: 251, 191, 36;    /* #FBBF24 */
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold leading-tight tracking-tight;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  h4 {
+    @apply text-xl md:text-2xl;
+  }
+
+  p {
+    @apply text-gray-600 dark:text-gray-400 leading-relaxed;
+  }
+
+  a {
+    @apply text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 transition-colors duration-200;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100 dark:bg-gray-800;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 dark:bg-gray-600 rounded-full hover:bg-gray-400 dark:hover:bg-gray-500;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 text-white;
+  }
+
+  .btn-secondary {
+    @apply bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700;
+  }
+
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-20;
+  }
+
+  .section-title {
+    @apply text-3xl font-bold text-center mb-12 relative pb-4;
+  }
+
+  .section-title:after {
+    content: '';
+    @apply absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-primary-600 rounded-full;
+  }
+
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg border border-gray-200 dark:border-gray-700;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600;
+  }
+
+  .hover-scale {
+    @apply transition-transform duration-300 hover:scale-105;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Remove default button styles */
+button, [type='button'], [type='reset'], [type='submit'] {
+  background-color: transparent;
+  background-image: none;
+}
+
+/* Custom focus styles */
+*:focus-visible {
+  @apply outline-none ring-2 ring-primary-500 ring-offset-2 ring-offset-white dark:ring-offset-gray-900;
+}
+
+/* Remove focus styles for mouse users */
+:focus:not(:focus-visible) {
+  @apply outline-none ring-0;
+}
+
+/* Utility classes */
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(0,0,0,0.10);
+}
+
+.text-shadow-md {
+  text-shadow: 0 4px 8px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.08);
+}
+
+.text-shadow-lg {
+  text-shadow: 0 15px 30px rgba(0,0,0,0.11), 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.text-shadow-none {
+  text-shadow: none;
+}
+
+/* For smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: white;
+    color: black;
+    font-size: 12pt;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+  
+  a {
+    text-decoration: underline;
+  }
+  
+  .break-inside-avoid {
+    break-inside: avoid;
+  }
+}

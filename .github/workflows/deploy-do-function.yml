@@ -1,0 +1,71 @@
+name: Deploy Digital Ocean Function
+
+on:
+  push:
+    branches:
+      - development
+    paths:
+      - 'backend/contact-me-dfn/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend/contact-me-dfn
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Create directory structure and move files
+      run: |
+        mkdir -p packages/contact-me/contact-me-dfn
+        mv index.js packages/contact-me/contact-me-dfn/
+        mv package.json packages/contact-me/contact-me-dfn/
+        if [ -f package-lock.json ]; then
+          mv package-lock.json packages/contact-me/contact-me-dfn/
+        fi
+        echo "Files moved successfully"
+        ls -la packages/contact-me/contact-me-dfn/
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        cache-dependency-path: 'backend/contact-me-dfn/packages/contact-me/contact-me-dfn/package.json'
+
+    - name: Install dependencies
+      run: npm ci
+      working-directory: backend/contact-me-dfn/packages/contact-me/contact-me-dfn
+
+    - name: Install doctl
+      uses: digitalocean/action-doctl@v2
+      with:
+        token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+    - name: Install serverless support
+      run: doctl serverless install
+
+    - name: Authenticate with Digital Ocean Functions
+      run: doctl serverless connect
+
+    - name: Deploy function
+      run: doctl serverless deploy . --verbose
+      env:
+        EMAIL_USER: ${{ secrets.EMAIL_USER }}
+        EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+        FROM_ADDRESS: ${{ secrets.FROM_ADDRESS }}
+
+    - name: Get function URL
+      id: get-url
+      run: |
+        URL=$(doctl serverless functions get contact-me/contact-me-dfn --url)
+        echo "function-url=$URL" >> $GITHUB_OUTPUT
+
+    - name: Notify deployment success
+      if: github.event_name == 'push'
+      run: |
+        echo "🚀 Digital Ocean Function deployed successfully!"
+        echo "Function URL: ${{ steps.get-url.outputs.function-url }}"
