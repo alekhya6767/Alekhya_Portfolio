@@ -16,7 +16,7 @@ const Contact = () => {
         </p>
         <div className="mt-8 flex justify-center">
           <a
-            href="mailto:shravan.fisher@live.com"
+            href="mailto:ndlalekhya98@gmail.com"
             className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors"
           >
             Say Hello

@@ -99,15 +99,9 @@ const Hero = () => {
 
             <motion.div variants={item} className="flex flex-wrap justify-center gap-4 mb-12">
               <a
-                href="#contact"
-                className="px-8 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-md transition-colors shadow-lg hover:shadow-primary-500/20"
-              >
-                Get In Touch
-              </a>
-              <a
                 href={resumeUrl}
                 download
-                className="px-8 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 font-medium rounded-md transition-colors flex items-center gap-2 shadow-sm hover:shadow-md"
+                className="px-8 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-md transition-colors shadow-lg hover:shadow-primary-500/20 flex items-center gap-2"
               >
                 <FiDownload className="w-5 h-5" />
                 Download CV

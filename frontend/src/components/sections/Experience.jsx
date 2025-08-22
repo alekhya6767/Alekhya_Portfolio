@@ -1,21 +1,46 @@
 import { motion } from 'framer-motion';
 import { FiBriefcase, FiAward } from 'react-icons/fi';
 
+// Custom icon components for organizations
+const HPIcon = () => (
+  <img src="/hp.png" alt="HP" className="w-6 h-6 rounded-full object-cover" />
+);
+
+const SJSUIcon = () => (
+  <img src="/sjsu.png" alt="SJSU" className="w-6 h-6 rounded-full object-cover" />
+);
+
+const SASTRAIcon = () => (
+  <img src="/sastra.jpg" alt="SASTRA" className="w-6 h-6 rounded-full object-cover" />
+);
+
 const experiences = [
   {
     id: 1,
+    role: 'Senior Firmware Engineer',
+    company: 'HP Inc.',
+    period: 'October 2022 - November 2024',
+    description: [
+      'Led key firmware features with measurable improvements (20% recovery time, 35% acoustic reduction)',
+      'API design and documentation using OpenAPI 3.0',
+      'Performance improvements (25% faster throughput, 15% reduced build time)',
+      'Team mentoring and test coverage achievements (92%)',
+    ],
+    icon: <HPIcon />,
+    type: 'work',
+  },
+  {
+    id: 2,
     role: 'Firmware Engineer',
     company: 'HP Inc.',
-    period: '2020 - 2024 (4+ years)',
+    period: 'October 2020 - October 2022',
     description: [
-      'Developed common firmware for home, enterprise, and large-format printers using C++ and Python',
-      'Worked extensively on middleware, printing features, media handling, sensors, and web services',
-      'Performed firmware flashing, middleware testing, feature development, and debugging',
-      'Conducted code analysis and debugging using kernel logs, boot logs, and Systrace tokens for root cause analysis',
-      'Ensured seamless integration and reliable performance across multiple product lines',
-      'Contributed to CI/CD pipelines using Jenkins for automated testing and deployment',
+      'Core firmware development in modern C++ (14/17)',
+      'Multi-protocol communication frameworks',
+      'Test automation across 10+ release cycles',
+      'ARM-based embedded systems integration',
     ],
-    icon: <FiBriefcase className="w-6 h-6 text-primary-600 dark:text-primary-400" />,
+    icon: <HPIcon />,
     type: 'work',
   },
 ];
@@ -27,11 +52,12 @@ const education = [
     institution: 'San Jose State University',
     period: 'Spring 2025 (Incoming)',
     description: [
+      'GPA: 3.8/4',
       'Accepted to multiple prestigious universities including UMass Amherst, Virginia Tech, Penn State, and Georgia Tech',
       'Focus on advanced software engineering principles and practices',
       'Preparing to advance expertise in C++ ecosystem and embedded systems',
     ],
-    icon: <FiAward className="w-6 h-6 text-primary-600 dark:text-primary-400" />,
+    icon: <SJSUIcon />,
     type: 'education',
   },
   {
@@ -44,7 +70,7 @@ const education = [
       'Strong foundation in computer science and programming fundamentals',
       'Specialized coursework in software development and system design',
     ],
-    icon: <FiAward className="w-6 h-6 text-primary-600 dark:text-primary-400" />,
+    icon: <SASTRAIcon />,
     type: 'education',
   },
 ];

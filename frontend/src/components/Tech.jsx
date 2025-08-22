@@ -91,7 +91,7 @@ const Tech = () => {
     // Fallback 2D component
     return (
       <div 
-        className='w-28 h-28 flex items-center justify-center bg-gray-300 rounded-full hover:bg-[#915EFF] transition-colors duration-300 group'
+        className='w-28 h-28 flex items-center justify-center bg-gray-300 rounded-full hover:bg-primary-600 transition-colors duration-300 group'
         key={technology.name}
         title={technology.name}
       >

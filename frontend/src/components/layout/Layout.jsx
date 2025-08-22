@@ -21,7 +21,9 @@ const Layout = ({ children }) => {
   }, [theme]);
 
   return (
-    <div className={`min-h-screen flex flex-col ${theme === 'dark' ? 'dark' : ''}`}>
+    <div 
+      className={`min-h-screen flex flex-col ${theme === 'dark' ? 'dark' : ''}`}
+    >
       
       <Header />
       

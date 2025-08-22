@@ -18,16 +18,19 @@ const services = [
     icon: <FiCpu className="w-8 h-8 text-primary-600 dark:text-primary-400" />,
     title: 'Firmware Development',
     description: 'Specialized in embedded systems, RTOS, interrupt handling, and memory-constrained programming for printer firmware.',
+    link: 'https://github.com/alekhya6767',
   },
   {
     icon: <FiCode className="w-8 h-8 text-primary-600 dark:text-primary-400" />,
-    title: 'Full-Stack Development',
-    description: 'Building scalable web applications with Django, Next.js, and modern JavaScript frameworks.',
+    title: 'Data Structures & Algorithms',
+    description: 'Proficient in algorithmic problem solving and coding interview preparation with focus on optimization and efficiency.',
+    link: 'https://neetcode.io/practice',
   },
   {
     icon: <FiSettings className="w-8 h-8 text-primary-600 dark:text-primary-400" />,
-    title: 'System Integration',
+    title: 'Web Development and System Integration',
     description: 'Expert in middleware testing, debugging, and ensuring seamless integration across platforms.',
+    link: 'https://github.com/alekhya6767',
   },
 ];
 
@@ -81,58 +84,25 @@ const About = () => {
           </h3>
           <div className="grid md:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <motion.div
+              <motion.a
                 key={index}
                 variants={item}
-                className="p-6 bg-gray-50 dark:bg-gray-800 rounded-lg hover:shadow-lg transition-shadow text-center"
+                href={service.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-6 bg-gray-50 dark:bg-gray-800 rounded-lg hover:shadow-lg transition-all hover:scale-105 text-center group cursor-pointer"
               >
-                <div className="flex justify-center mb-4">{service.icon}</div>
+                <div className="flex justify-center mb-4 group-hover:scale-110 transition-transform">{service.icon}</div>
                 <h4 className="text-lg font-medium text-gray-900 dark:text-white mb-3">
                   {service.title}
                 </h4>
                 <p className="text-gray-600 dark:text-gray-400">{service.description}</p>
-              </motion.div>
+              </motion.a>
             ))}
           </div>
         </motion.div>
       </div>
 
-      {/* Education Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-        className="mt-16"
-      >
-        <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-8 text-center">Education</h3>
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700">
-            <div className="flex items-start space-x-4">
-              <FiBookOpen className="w-6 h-6 text-primary-600 dark:text-primary-400 mt-1" />
-              <div>
-                <h4 className="text-lg font-semibold text-gray-900 dark:text-white">MS in Software Engineering</h4>
-                <p className="text-primary-600 dark:text-primary-400 font-medium">San Jose State University</p>
-                <p className="text-gray-600 dark:text-gray-400 text-sm">2025-2026 | GPA: 3.8/4.0</p>
-                <p className="text-gray-500 dark:text-gray-500 text-sm mt-2">
-                  Also accepted to UMass Amherst, Virginia Tech, Penn State, Georgia Tech
-                </p>
-              </div>
-            </div>
-          </div>
-          
-          <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700">
-            <div className="flex items-start space-x-4">
-              <FiAward className="w-6 h-6 text-primary-600 dark:text-primary-400 mt-1" />
-              <div>
-                <h4 className="text-lg font-semibold text-gray-900 dark:text-white">B.Tech in Information Technology</h4>
-                <p className="text-primary-600 dark:text-primary-400 font-medium">SASTRA University</p>
-                <p className="text-gray-600 dark:text-gray-400 text-sm">2016–2020 | GPA: 7.9/10</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </motion.div>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
