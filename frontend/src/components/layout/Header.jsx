@@ -49,9 +49,13 @@ const Header = () => {
           >
             <a 
               href="#home" 
-              className="text-2xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent"
+              className="flex items-center"
             >
-              DN
+              <img 
+                src="/logo.png" 
+                alt="Logo" 
+                className="h-16 w-16 rounded-full object-cover bg-white dark:bg-gray-800 p-1 border border-gray-200 dark:border-gray-700"
+              />
             </a>
           </motion.div>
 
