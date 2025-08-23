@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiGithub, FiExternalLink, FiStar, FiGitBranch, FiCode } from 'react-icons/fi';
-import { fadeInUp, staggerContainer } from '../../utils/animations.jsx';
+import { fadeInUp } from '../../utils/animations.jsx';
 
 const ProjectCard = ({ project, index, isPinned = false }) => {
   const [isHovered, setIsHovered] = useState(false);

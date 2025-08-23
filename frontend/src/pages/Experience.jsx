@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { fadeInUp } from '../../utils/animations.jsx';
+import { fadeInUp } from '../utils/animations.jsx';
 
 const Experience = () => {
   return (

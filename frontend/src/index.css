@@ -1,6 +1,10 @@
 /* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Import global styles */
 @import './styles/global.css';
 
@@ -95,7 +99,7 @@
 
 /* Background image utility class */
 .bg-portfolio {
-  background-image: url('/bg.png') !important;
+  background-image: url('../assets/bg.png') !important;
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
