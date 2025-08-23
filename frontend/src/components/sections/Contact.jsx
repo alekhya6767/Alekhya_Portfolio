@@ -25,15 +25,56 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      // In a real application, you would send this data to your backend
-      console.log('Form submitted:', formData);
+      // Option 1: Use Formspree (free alternative)
+      const response = await fetch('https://formspree.io/f/xjkonlzq', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject || 'Contact Form Message',
+          message: formData.message,
+          _replyto: formData.email,
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitStatus({
+          success: true,
+          message: 'Your message has been sent successfully! I\'ll get back to you soon.'
+        });
+        
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: '',
+        });
+      } else {
+        throw new Error('Failed to send message');
+      }
       
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Clear success message after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus({ success: null, message: '' });
+      }, 5000);
+      
+    } catch (error) {
+      console.error('Contact form error:', error);
+      
+      // Fallback: Open email client
+      const subject = encodeURIComponent(formData.subject || 'Contact from Portfolio');
+      const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
+      const mailtoLink = `mailto:ndlalekhya98@gmail.com?subject=${subject}&body=${body}`;
+      
+      window.open(mailtoLink, '_blank');
       
       setSubmitStatus({
         success: true,
-        message: 'Your message has been sent successfully! I\'ll get back to you soon.'
+        message: 'Opening your email client. Please send the pre-filled email.'
       });
       
       // Reset form
@@ -42,17 +83,6 @@ const Contact = () => {
         email: '',
         subject: '',
         message: '',
-      });
-      
-      // Clear success message after 5 seconds
-      setTimeout(() => {
-        setSubmitStatus({ success: null, message: '' });
-      }, 5000);
-      
-    } catch (error) {
-      setSubmitStatus({
-        success: false,
-        message: 'Something went wrong. Please try again later.'
       });
     } finally {
       setIsSubmitting(false);
